@@ -10,6 +10,21 @@ class Beers extends React.Component {
       .then( res => this.setState({ beers: res.data }) )
   }
 
+  mapBeers = () => {
+    const { beers } = this.state
+    return beers.map( r => {
+      <li>r</li>
+    })
+  }
+
+  render() {
+  const { beers } = this.state
+  return(
+    <div>
+      <beers></beers>
+    </div>
+  )
+  }
 }
 
 export default Beers;
