@@ -3,13 +3,14 @@ import axios from 'axios';
 import {
   Card,
   Container,
+  //Image,
 } from 'semantic-ui-react';
 
 class Breweries extends React.Component {
-  state = { breweries: {entries:[] } }
+  state = { breweries: { entries:[] } }
   
   componentDidMount() { 
-    axios.get('/api/all_breweries')
+    axios.get(`/api/all_breweries`)
     .then( res => { this.setState({ breweries: res.data }) })
     .catch(err => { console.log(err)})
   
@@ -21,10 +22,8 @@ class Breweries extends React.Component {
         <Card.Group itemsPerRow={1}>
       { entries.map( r =>
       <Card key={r.name}>
+      {/* <Image avatar src={r.images.medium} /> */}
       <Card.Content>
-        {/* <Card.Image >
-          { r.medium }
-        </Card.Image> */}
         <Card.Header>
           {r.name_short_display}
           </Card.Header>
