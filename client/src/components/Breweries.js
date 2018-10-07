@@ -5,23 +5,20 @@ import {
   Container,
 } from 'semantic-ui-react';
 
-
-class Beers extends React.Component {
-  state = { beers: { entries: [] } }
-
-
+class Breweries extends React.Component {
+  state = { breweries: {entries:[] } }
+  
   componentDidMount() { 
-      axios.get('/api/all_beers')
-      .then( res => { this.setState({ beers: res.data }) })
-      .catch(err => { console.log(err)})
-    
+    axios.get('/api/all_breweries')
+    .then( res => { this.setState({ breweries: res.data }) })
+    .catch(err => { console.log(err)})
+  
   }
-
   render() {
-    const { entries } = this.state.beers
-  return(
-    <Container>
-      <Card.Group itemsPerRow={1}>
+      const { entries } = this.state.breweries
+    return(
+      <Container>
+        <Card.Group itemsPerRow={1}>
       { entries.map( r =>
       <Card key={r.name}>
       <Card.Content>
@@ -29,7 +26,7 @@ class Beers extends React.Component {
           { r.medium }
         </Card.Image> */}
         <Card.Header>
-          {r.name_display}
+          {r.name_short_display}
           </Card.Header>
           <Card.Description>
             {r.description}
@@ -37,9 +34,11 @@ class Beers extends React.Component {
             </Card.Content>
             </Card>
   )}
-  </Card.Group>
-  </Container>
-  )}
+      </Card.Group>
+      </Container>
+    )
+  }
+
 }
 
-export default Beers;
+export default Breweries;
