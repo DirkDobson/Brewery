@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import ReactPaginate from 'react-paginate';
 import {
   Card,
   Container,
@@ -34,6 +35,7 @@ class Breweries extends React.Component {
             </Card>
   )}
       </Card.Group>
+      <ReactPaginate />
       </Container>
     )
   }
